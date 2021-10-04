@@ -38,6 +38,7 @@ export const getAll = async (req, res) => {
             res.status(200).json({ status: false, message: "Posts failed to fetch!" })
 
     } catch (error) {
+        console.log(error);
         //TODO: Need to log this error for reference to check the issue
         res.status(500).json({ status: false, message: "Something went wrong!" })
     }

@@ -1,4 +1,4 @@
-import { PostsSchema } from "../../index"
+import { PostsSchema, CommentSchema } from "../../index"
 
 class Posts {
     add = async (data) => {
@@ -7,7 +7,9 @@ class Posts {
 
     getAll = async (condition = null, page, limit) => {
         return await PostsSchema.findAll({
-            raw: true,
+            include: {
+                model: CommentSchema
+            },
             where: condition,
             limit,
             offset: page - 1

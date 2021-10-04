@@ -3,6 +3,7 @@ import multer from 'multer'
 import { login, register } from '../controller/users';
 import { add as addTopic, getAll as getTopics } from '../controller/posts/topics';
 import { add as addPost, getAll as getPosts } from '../controller/posts';
+import { add as addComment } from '../controller/posts/comments';
 import { authMiddleware } from '../utils/authMiddleware';
 const Router = express.Router();
 
@@ -26,5 +27,6 @@ Router.post("/topics", authMiddleware, addTopic);
 Router.get("/topics", authMiddleware, getTopics);
 Router.post("/topics/:topicId/posts", authMiddleware, upload.array('files'), addPost);
 Router.get("/topics/:topicId/posts", authMiddleware, getPosts);
+Router.post("/posts/:postId/comments", authMiddleware, addComment);
 
 module.exports = Router
