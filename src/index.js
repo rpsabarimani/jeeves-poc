@@ -46,7 +46,7 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
     }
 
     // in development, attach the full error object
-    if (app.get('env') === 'development') {
+    if (process.env.NODE_ENV === 'development') {
         errorMsg.error = err;
     }
 

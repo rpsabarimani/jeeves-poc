@@ -9,10 +9,10 @@ export const add = async (req, res) => {
         const response = await TopicsModel.add({ id: uuidv4(), title, createdBy })
 
         if (response) {
-            res.status(200).json({ status: true, data: response, message: "Topics fetched successfully!" })
+            res.status(200).json({ status: true, data: response, message: "Topic created successfully!" })
         }
         else
-            res.status(200).json({ status: false, message: "Topics failed to fetch!" })
+            res.status(200).json({ status: false, message: "Topic failed to create!" })
 
     } catch (error) {
         //TODO: Need to log this error for reference to check the issue
@@ -27,10 +27,10 @@ export const getAll = async (req, res) => {
         const response = await TopicsModel.getAll(null, page, limit)
 
         if (response) {
-            res.status(200).json({ status: true, data: response, message: "Topic created successfully!" })
+            res.status(200).json({ status: true, data: response, message: "Topic fetched successfully!" })
         }
         else
-            res.status(200).json({ status: false, message: "Topic failed to create!" })
+            res.status(200).json({ status: false, message: "Topic failed to fetch!" })
 
     } catch (error) {
         //TODO: Need to log this error for reference to check the issue
