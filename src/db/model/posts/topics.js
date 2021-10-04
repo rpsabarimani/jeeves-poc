@@ -5,8 +5,13 @@ class Topics {
         return await TopicsSchema.create(data)
     }
 
-    get = async (condition) => {
-        return await TopicsSchema.findOne({ raw: true, where: condition })
+    getAll = async (condition = null, page, limit) => {
+        return await TopicsSchema.findAll({
+            raw: true,
+            where: condition,
+            limit,
+            offset: page - 1
+        })
     }
 }
 
