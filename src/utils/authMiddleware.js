@@ -1,5 +1,5 @@
 import UserModel from '../db/model/users';
-
+import { decodeToken } from './token';
 
 export const authMiddleware = async (req, res, next) => {
     const authHeader = req.get("Authorization");
@@ -7,7 +7,6 @@ export const authMiddleware = async (req, res, next) => {
         res.status(401).json({ status: false, message: "Missing Authorization header with Bearer token" })
         return;
     }
-
     const token = authHeader.substring("Bearer ".length);
     try {
         const decoded = await decodeToken(token);
